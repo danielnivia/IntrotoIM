@@ -1,4 +1,4 @@
-# Intro to Interactive Media
+# Introduction to Interactive Media
 Repository for Introduction to Interactive Media
 
 Here I will upload:
