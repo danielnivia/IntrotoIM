@@ -1,5 +1,6 @@
 // this is the first version of my code, experimenting with rotate function
 // best resource to understand transformations until now: https://www.youtube.com/watch?v=o9sgjuh-CBM 
+// code will be an experiment from now on
 function setup() {
   createCanvas(400, 400);
 }
