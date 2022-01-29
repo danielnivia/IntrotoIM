@@ -1,5 +1,5 @@
 
-### Make a self-portrait using p5.js.
+## Make a self-portrait using p5.js.
 - The portrait must be **entirely created by your code** i.e. you must not
 	interact with your computer while the portrait is being made (e.g. no
 	drawing using the mouse)
