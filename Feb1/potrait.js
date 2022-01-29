@@ -1,50 +1,60 @@
 // this is the first version of my code, experimenting with rotate function
 // best resource to understand transformations until now: https://www.youtube.com/watch?v=o9sgjuh-CBM 
 // code will be an experiment from now on
-//program that rotates a circle around point (300,200)
-let angle = 0;
+// Potrait-Intro_to_IM-Feb1
+/*
+Date: 
+Name: Daniel Nivia (dno220)
+Description: Program in p5js that draw's a self-potrait. 
+Uses 2D primitives and some transform functions.
+*/
 
 function setup() {
+  //----
   createCanvas(400, 400);
-  //rectMode(CENTER)
+  // putting the background here reduces the quality of the shapes
 }
 
 function draw() {
-  background(66, 245, 147);
-  stroke(255);
+  //----
+  //----
+  //setting up
+  background(66, 245, 147); // turquoise background color
+  stroke(255); // white lines to show the center
   line(0, 200, 400, 200); // x-axis
   line(200, 0, 200, 400); //y-axis
-  //------------------
+  //----
+  //----
 
-  translate(200, 200);
+  translate(200, 200); // sets origin to (200,200)
   fill(50, 50, 80);
   stroke(0);
   //-------------
-  push(); // serves as a save this temporary changes
+      push();
   rotate(radians(50));
   rect(0, 0, 50, 50);
-  pop(); // serves as restore the original settings
-  //-------------
+      pop();
+  //----
   fill(30, 35, 180);
-  //rotate(radians(-45));
-  push();
+      push();
   rotate(radians(180));
   rect(0, 0, 80, 30);
-  pop();
-  //-------------
+      pop();
+  //----
   fill(250, 5, 45);
-  //rotate(radians(-120)) // reset to 0 degreeszoo
+  
   translate(100, 0);
-  ellipseMode(CENTER);
+      push();
+  ellipseMode(CENTER); // rotates around upper left corner
+  rotate(radians(20));
+  fill(25)
+  ellipse(0, 0, 40, 60);
+      pop();
+  
+  ellipseMode(CENTER); // rotates around center of shape
   ellipse(0, 0, 10);
-  push();
-  ellipseMode(CORNER);
-  rotate(radians(angle));
-
-  ellipse(0, 20, 40, 60);
-  line(0, 0, 0, 20);
-  angle = angle + 1;
-  pop();
+  
 }
+
 
 
