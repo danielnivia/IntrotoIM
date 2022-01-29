@@ -2,7 +2,7 @@
 // best resource to understand transformations until now: https://www.youtube.com/watch?v=o9sgjuh-CBM 
 // code will be an experiment from now on
 /*
-// File: Potrait-Intro_to_IM-Feb1
+File: Potrait-Intro_to_IM-Feb1
 Date: 
 Name: Daniel Nivia (dno220)
 Description: Program in p5js that draw's a self-potrait. 
