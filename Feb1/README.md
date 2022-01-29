@@ -26,7 +26,7 @@ I worked on understanding the function [rotate()](https://p5js.org/reference/#/p
 Even though the assignment does not require animation, understanding how `rotate()` works is useful to do shapes that are at a particular angle. For this I have already branched my main repository to do experiments on the file `potrait.js`. I hope to further explore and start developing the self potrait with diverse elements.
 
 Below is a screenshot of the result up to this point:
-![potrait1-00]()
+![potrait1-00](potrait1-00.jpg)
 
 --- 
 Jan 29: 
