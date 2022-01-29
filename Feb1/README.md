@@ -80,6 +80,7 @@ function draw() {
 Jan 29:
 a) Drawing a musical note
 After learning some of the new functions like [resetMatrix()](https://p5js.org/reference/#/p5/resetMatrix), I looked experimenting using the knowledge from yesterday and the new one. The main objective was to draw a quater musical note. I wanted to add this as I like music making and I play the violin (drawing a violin with simple shapes seems like a challenging task for now). Thus, I tried out the knowledge acquired for transformations to work on these changes. And the result for now is the following:
+
 ![potrait1-00](potrait1-01.jpg)
 
 (Code until this point)
