@@ -16,3 +16,4 @@
 	- Also in the `README.md`, **describe any difficulties** you had or anything
 		interesting you discovered.
 - Post your self portrait to our **Discord channel**
+---
