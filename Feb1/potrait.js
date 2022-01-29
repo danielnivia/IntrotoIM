@@ -1,4 +1,5 @@
 // best resource to understand transformations until now: https://www.youtube.com/watch?v=o9sgjuh-CBM 
+// ready for iPad
 /*
 File: Potrait-Intro_to_IM-Feb1
 Date: 
