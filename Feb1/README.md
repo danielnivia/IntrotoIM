@@ -170,5 +170,5 @@ Thanks to the application [Processing for iOS](https://processing-app.org/) (ava
 ---
 Jan 30: In this version of the potrait, most of the elements are finished, I am hoping just to add some music notes because I like music. This last task is quite challenging due to the rotation element of the music note head. I managed to draw it and it was shown in images 2 to 4, but I eliminated it to focus on the other elements of the potrait. The design in the middle of the shirt is a logo I came up during Foundations of Graphic Design in Fall 2019 for an assignment. I wanted to add it because I feel it is part of me as an artist. In additio, drawing this shape allowed me to practice the `triangle()` function which I had yet to experiment with.
 
-![potrait1-05]()
+![potrait1-05](potrait1-05.jpg)
 
