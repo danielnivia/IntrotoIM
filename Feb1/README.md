@@ -370,3 +370,106 @@ function draw() {
 }
 
 ````
+---
+Jan 30: Drawing music notes
+I decided to start a clear canvas (except the background and the grid I created) to draw some musical notes. In order to do this I used the code in which I had already drawn a music shape and adapted it. I wanted to draw two eighth notes and a quarter note. I was able to complete this with the following result and code:
+
+![musicalnotes](musicalnotes.jpg)
+
+````
+/*
+File: Potrait-Intro_to_IM-Feb1
+Date: 
+Name: Daniel Nivia (dno220)
+Description: Program in p5js that draw's a self-potrait. 
+Uses 2D primitives and some transform functions.
+*/
+
+function setup() {
+  //----
+  createCanvas(400, 400);
+  // putting the background here reduces the quality of the shapes
+}
+
+function draw() {
+  //----
+  //----setting up----\\
+  background(66, 245, 147); // turquoise background color
+  stroke(255); // white lines to show the center
+  //grid for drawing around
+  line(0, 200, 400, 200); // x-axis
+  line(200, 0, 200, 400); //y-axis
+  //upper left cuadrant
+  line(0, 100, 400, 100);
+  line(100, 0, 100, 400);
+  //bottom left cuadrant
+  line(0, 300, 400, 300);
+  //right cuadrants
+  line(300, 0, 300, 400);
+  //---- test fill and shape ----\\
+  //   fill(20,34,200)
+  //		rect(10,10,40,30)
+  //----
+
+  //---- Music Notes ----\\
+
+  //the stem of the musical note
+  noStroke();
+  push();
+  
+  resetMatrix(); // origin to (0,0)
+  fill(25);
+  rectMode(CENTER);
+  // two eighth notes stems vertical
+  rect(110, 70, 10, 80, 5); // -w = 10, h = 80, round edges = 5
+  rect(184, 52, 10, 80, 5);
+  // stem for quarter note
+  rect(250, 75, 10, 80, 5);
+  
+  pop();
+  //----
+  
+  //----
+  //heads of the musical notes
+  translate(100, 110); // changes origin to (100,110)
+  
+  push();
+  ellipseMode(CENTER); // center of the ellipse works as reference point for translations and rotations
+  rotate(radians(60)); // rotate 60 degrees
+  fill(25);
+  ellipse(0, 0, 20, 30);
+  pop();
+  
+  translate(75, -15); // (125,100)
+  //--------------
+  push();
+  ellipseMode(CENTER);
+  rotate(radians(60)); // rotate 60 degrees from the new origin
+  fill(25);
+  ellipse(0, 0, 20, 30);
+  pop();
+  //--------------
+  push();
+  resetMatrix();
+  translate(240, 115);
+  ellipseMode(CENTER);
+  rotate(radians(60)); // rotate 60 degrees from the new origin
+  fill(25);
+  ellipse(0, 0, 20, 30);
+  pop();
+  //--------------
+  // HORIZONTAL STEM joining eighth note stems
+  push();
+  resetMatrix();
+  translate(146.5, 25);
+  rectMode(CENTER);
+  fill(25);
+  rotate(radians(-15)); // joining stem horizontally
+  rect(0, 0, 85, 10, 5);
+  pop();
+  //--------------
+}
+
+````
+
+However, I did not took into account how it would fit in my drawing that I had drawn. Therefore, I decided to only do the eighth notes and adjusted the parameters to fit inside the drawing. In general drawing musical notes is very challenging and in my final code I need to clean and comment it as clear as possible in order to follow the steps.
