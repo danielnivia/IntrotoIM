@@ -161,10 +161,10 @@ function draw() {
 Jan 29 - 30:
 Thanks to the application [Processing for iOS](https://processing-app.org/) (available in the App Store) I was able to work on my iPad offline and experimenting more with my potrait. I was working this way as I was travelling by bus to Expo and needed to use time effectively. Below are the screenshots of the different versions of the potrait. As I had no internet in the bus defining the skin color was not easy and ended with a dark brown, now that I have the internet I will update that.
 
-![potrait1-03]()
+![potrait1-02](potrait1-02.jpg)
 
-![potrait1-04]()
+![potrait1-03](potrait1-03.jpg)
 
-![potrait1-05]()
+![potrait1-04](potrait1-04.jpg)
 
 
