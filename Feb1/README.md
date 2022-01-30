@@ -81,7 +81,7 @@ Jan 29:
 a) Drawing a musical note
 After learning some of the new functions like [resetMatrix()](https://p5js.org/reference/#/p5/resetMatrix), I looked experimenting using the knowledge from yesterday and the new one. The main objective was to draw a quater musical note. I wanted to add this as I like music making and I play the violin (drawing a violin with simple shapes seems like a challenging task for now). Thus, I tried out the knowledge acquired for transformations to work on these changes. And the result for now is the following:
 
-![potrait1-00](potrait1-01.jpg)
+![potrait1-01](potrait1-01.jpg)
 
 (Code until this point)
 ````
@@ -157,5 +157,14 @@ function draw() {
 }
 
 ````
+---
+Jan 29 - 30:
+Thanks to the application [Processing for iOS](https://processing-app.org/) (available in the App Store) I was able to work on my iPad offline and experimenting more with my potrait. I was working this way as I was travelling by bus to Expo and needed to use time effectively. Below are the screenshots of the different versions of the potrait. As I had no internet in the bus defining the skin color was not easy and ended with a dark brown, now that I have the internet I will update that.
+
+![potrait1-03]()
+
+![potrait1-04]()
+
+![potrait1-05]()
 
 
