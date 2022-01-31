@@ -1,21 +1,10 @@
-## (Here should go documentation and screenshot of potrait)
-### Make a self-portrait using p5.js.
-- The portrait must be **entirely created by your code** i.e. you must not
-	interact with your computer while the portrait is being made (e.g. no
-	drawing using the mouse)
-- The portrait **does not need to be dynamic** (i.e. it does not need to change
-	while we look at it)
-- The portrait does not need to be realistic. The purpose is to practice using
-	the simple drawing functions.
-- In your Github repository, create a **new folder named** `Feb1`
-	- Upload your *program into the new folder, with the extension* `.js`.
-		- If you use any variables, chose good names.
-	- Upload a **screenshot of your portrait into the new folder** (Feb1)
-	- Create a `README.md` in the new folder and **include your screenshot in the**
-		`README.md`.
-	- Also in the `README.md`, **describe any difficulties** you had or anything
-		interesting you discovered.
-- Post your self portrait to our **Discord channel**
+---
+## Documentation
+I managed to do a self potrait (more like a whole body drawing) by using simple 2D shapes and functions like `push()`, `pop()`, `translate()` and `rotate()`. After experimenting with this tools I managed to end up with the final design presented below:
+
+![potrait1-07](potrait1-07.jpg)
+
+Below are the notes of the challenges and the overall process through several days.
 
 ---
 **Notes of the process by dates**
@@ -475,3 +464,6 @@ function draw() {
 However, I did not took into account how it would fit in my drawing that I had drawn. Therefore, I decided to only do the eighth notes and adjusted the parameters to fit inside the drawing. In general drawing musical notes is very challenging and in my final code I need to clean and comment it as clear as possible in order to follow the steps. Below is the pre final result of my drawing.
 
 ![potrait1-06](potrait1-06.jpg)
+
+Jan 31:
+I just eliminated the grid that I had with white strokes and cleaned up the comments I had for each of the sections. The final version of my potrait it is shown at the beginning of the file.
