@@ -465,5 +465,7 @@ However, I did not took into account how it would fit in my drawing that I had d
 
 ![potrait1-06](potrait1-06.jpg)
 
+---
+
 Jan 31:
 I just eliminated the grid that I had with white strokes and cleaned up the comments I had for each of the sections. The final version of my potrait it is shown at the beginning of the file.
