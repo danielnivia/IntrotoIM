@@ -472,4 +472,6 @@ function draw() {
 
 ````
 
-However, I did not took into account how it would fit in my drawing that I had drawn. Therefore, I decided to only do the eighth notes and adjusted the parameters to fit inside the drawing. In general drawing musical notes is very challenging and in my final code I need to clean and comment it as clear as possible in order to follow the steps.
+However, I did not took into account how it would fit in my drawing that I had drawn. Therefore, I decided to only do the eighth notes and adjusted the parameters to fit inside the drawing. In general drawing musical notes is very challenging and in my final code I need to clean and comment it as clear as possible in order to follow the steps. Below is the pre final result of my drawing.
+
+![potrait1-06](potrait1-06.jpg)
