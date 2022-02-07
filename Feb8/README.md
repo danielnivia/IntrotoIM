@@ -283,8 +283,11 @@ So I decided to clean yesterday's code by eliminating the classes and using a si
 **Images:**
 
 ![final1-01](final1-01.jpg)
+
 ![final1-02](final1-02.jpg)
+
 ![final1-03](final1-03.jpg)
+
 
 **Code:**
 
