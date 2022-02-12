@@ -86,4 +86,8 @@ class Rects{
 ---
 The idea is now to make each of the rectangles rotate around their center at different speeds in their location where they are created. For this I will be using the functions `translate()` and `rotate()`
 
-<iframe src="https://editor.p5js.org/danielnivia/full/o5-aoIbtO"></iframe>
+
+
+https://user-images.githubusercontent.com/78901786/153708886-e1e1010a-c943-4936-b868-ae06bac9ca59.mp4
+
+
