@@ -84,3 +84,4 @@ class Rects{
 ````
 
 ---
+The idea is now to make each of the rectangles rotate around their center at different speeds in their location where they are created. For this I will be using the functions `translate()` and `rotate()`
