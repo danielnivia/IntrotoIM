@@ -9,24 +9,22 @@ let ball;
 // array for the colors of the rectangles
 let colorsArray = ["green", "yellow", "red", "purple"];
 
-//initial xPosition for rectangle
+//initial xPosition for rectangle grid
 let xPos = 75;
-//initial yPosition for rectangle
+//initial yPosition for rectangle grid
 let yPos = 100;
 
 const INITIALXSPEED = 4;
 const INITIALYSPEED = -6; // starting moving up
 const CIRCLESIZE = 15;
 
+// let myCircle = new movingBall(25, 72);
+let distPaddleBall; // assign the variable
 function setup() {
   createCanvas(500, 500);
   //frameRate(20);
   background(220);
 
-  ballx = 10;
-  bally = 450;
-  ballxSpeed = INITIALXSPEED;
-  ballySpeed = INITIALYSPEED;
 
   //counter for the FOR loop to change xPos and yPos
   counter = 0;
@@ -66,52 +64,18 @@ function drawPaddle() {
   //rectangle = rect(xPosRect, 450, 80, 10);
   rectangle = rect(mouseX, 450, 80, 10);
   pop();
-  
-  
+
   //checking if the rectangle hits the border
-  if (mouseX < 40){
+  if (mouseX < 40) {
     mouseX = 40;
-      
-      }
-  
-  if (mouseX > width-40){
-    mouseX = (width-40);
-      
-      }
+  }
+
+  if (mouseX > width - 40) {
+    mouseX = width - 40;
+  }
 }
 
-function drawBall() {
-  // update the position of the circle
-  ballx = ballx + ballxSpeed;
-  bally = bally + ballySpeed;
 
-  // Check for collisions
-  let r = CIRCLESIZE / 2;
-  if (ballx < r || ballx > width - r) {
-    ballxSpeed = -ballxSpeed;
-  }
-
-  //THIS CODE BELOW IS TO END GAME IF HITS BOTTOM
-  // if(ball.y + ball.diameter / 2 >= windowHeight) {
-  //      alive = false;
-  //  }
-  //r+50 to hit the top line that separates score
-  if (bally < r + 50 || bally > height - r) {
-    ballySpeed = -ballySpeed;
-  }
-
-  //distance between Paddle and Ball
-  distPaddleBall = int(dist(ballx, bally, mouseX, 445));
-  //checking for the values commented out
-  //print("Distance",distPaddleBall,"xPosRect", xPosRect, "Y",bally);
-  if (distPaddleBall > 0 && distPaddleBall < 40 && bally > 445) {
-    ballySpeed = -ballySpeed;
-  }
-
-  // Draw the circle
-  fill(10);
-  ball = ellipse(ballx, bally, CIRCLESIZE, CIRCLESIZE);
-}
 
 function draw() {
   background(220);
@@ -125,8 +89,9 @@ function draw() {
   drawPaddle();
 
   // drawing the ball
-  drawBall();
-
+  //drawBall();
+  myCircle.update();
+  myCircle.checkCollisions();
 }
 
 function drawRects() {
@@ -159,4 +124,45 @@ class Rects {
     // draw rectangle with following variables
     rect(this.xPosition, this.yPosition, this.width, this.height, 5);
   }
+
 }
+
+class movingBall {
+  constructor(xpos, ypos) {
+    this.x = xpos;
+    this.y = ypos;
+    this.xSpeed = INITIALXSPEED;
+    this.ySpeed = INITIALYSPEED;
+    this.size = CIRCLESIZE;
+  }
+
+  update() {
+    // update the position of the circle
+    this.x = this.x + this.xSpeed;
+    this.y = this.y + this.ySpeed;
+    // create the circle
+    fill(10);
+    ball = ellipse(this.x, this.y, this.size, this.size);
+  }
+  // check collisions of ball around wall
+  checkCollisions() {
+    const R = this.size / 2;
+    if (this.x < R || this.x > width - R) {
+      this.xSpeed = -this.xSpeed;
+    }
+    //+50 to hit the top line
+    if (this.y < R + 50 || this.y > height - R) {
+      this.ySpeed = -this.ySpeed;
+    }
+    //distance between Paddle and Ball
+    distPaddleBall = int(dist(this.x, this.y, mouseX, 445));
+    //checking for the values commented out
+    //print("Distance",distPaddleBall,"xPosRect", xPosRect, "Y",bally);
+    if (distPaddleBall > 0 && distPaddleBall < 40 && this.y > 445) {
+      this.ySpeed = -this.ySpeed;
+    }
+  }
+
+}
+
+let myCircle = new movingBall(10, 450);
