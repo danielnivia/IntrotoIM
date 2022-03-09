@@ -4,13 +4,15 @@ let xPosRect = 200; //initial position
 // array for the rectangles to break
 let myRectsArray = [];
 
+let rectangle;
+
 // array for the colors of the rectangles
 let colorsArray = ["green", "yellow","red","purple"];
 
 //initial xPosition for rectangle 
 let xPos = 50;
   //initial yPosition for rectangle
-let yPos = 50;
+let yPos = 75;
 
 const INITIALXSPEED = 4;
 const INITIALYSPEED = -6; // starting moving up
@@ -79,7 +81,12 @@ function drawBall(){
   if ( (ballx < r) || (ballx > width-r)) {
     ballxSpeed = -ballxSpeed;
   }
-  if ( (bally < r) || (bally > height-r)) {
+  //r+50 to hit the top line that separates score
+  //THIS CODE BELOW IS TO END GAME IF HITS BOTTOM
+   // if(ball.y + ball.diameter / 2 >= windowHeight) {
+   //      alive = false;
+   //  }
+  if ( (bally < r+50) || (bally > height-r)) {
     ballySpeed = -ballySpeed;
   }
   
@@ -143,7 +150,8 @@ function drawRects(){
     myRectsArray[i].drawRect();
   }
   // draw a rectangle to separate score at the top
-  //rect()
+  fill(15)
+  rect(0,50,500,5)
 }
 
 //class for rectangles to break
