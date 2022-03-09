@@ -10,9 +10,9 @@ let ball;
 let colorsArray = ["green", "yellow", "red", "purple"];
 
 //initial xPosition for rectangle
-let xPos = 50;
+let xPos = 75;
 //initial yPosition for rectangle
-let yPos = 75;
+let yPos = 100;
 
 const INITIALXSPEED = 4;
 const INITIALYSPEED = -6; // starting moving up
@@ -23,7 +23,7 @@ function setup() {
   //frameRate(20);
   background(220);
 
-  ballx = 200;
+  ballx = 10;
   bally = 450;
   ballxSpeed = INITIALXSPEED;
   ballySpeed = INITIALYSPEED;
@@ -36,7 +36,7 @@ function setup() {
   for (let i = 0; i < 32; i++) {
     if (counter === 8) {
       counter = 0;
-      xPos = 50; // reset to 50
+      xPos = 75; // reset to 75
       yPos += 25; // increment 25
     }
 
@@ -66,6 +66,18 @@ function drawPaddle() {
   //rectangle = rect(xPosRect, 450, 80, 10);
   rectangle = rect(mouseX, 450, 80, 10);
   pop();
+  
+  
+  //checking if the rectangle hits the border
+  if (mouseX < 40){
+    mouseX = 40;
+      
+      }
+  
+  if (mouseX > width-40){
+    mouseX = (width-40);
+      
+      }
 }
 
 function drawBall() {
@@ -103,6 +115,8 @@ function drawBall() {
 
 function draw() {
   background(220);
+  //set all rectangles to center mode
+  rectMode(CENTER);
 
   //game state for playing draw the necessary objects
   // function to draw the rectangles in the array
@@ -113,29 +127,6 @@ function draw() {
   // drawing the ball
   drawBall();
 
-  //CODE for moving Rectangle Pad for the game
-  if (keyIsPressed === true) {
-    //code commented, checking that is was working
-    //print("HELLO")
-
-    if (keyCode == LEFT_ARROW) {
-      // reduce the x position
-      xPosRect -= 3;
-    }
-    // check if the rectangle has hit the border in the left
-    if (xPosRect < 25) {
-      // not change the value
-      xPosRect = 25;
-    } else if (keyCode == RIGHT_ARROW) {
-      // increase the x position
-      xPosRect += 3;
-    }
-    // check if the rectangle has hit the right border
-    if (xPosRect > width - 25) {
-      // not change the value
-      xPosRect = width - 25;
-    }
-  }
 }
 
 function drawRects() {
@@ -144,7 +135,7 @@ function drawRects() {
   }
   // draw a rectangle to separate score at the top
   fill(15);
-  rect(0, 50, 500, 5);
+  rect(250, 50, 500, 5);
 }
 
 //class for rectangles to break
