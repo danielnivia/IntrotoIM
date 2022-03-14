@@ -3,7 +3,7 @@
 //let xPosRect = 200; //initial position
 
 // array for the rectangles to break
-let myRectsArray = [];
+let myRectsArray; //= []; // JUST DEFINE THE VARIABLE
 
 let rectangle;
 let ball; // global variable for class check
@@ -19,8 +19,13 @@ const INITIALXSPEED = 4;
 const INITIALYSPEED = -6; // starting moving up
 const CIRCLESIZE = 15;
 
+const RECTWIDTH = 50; 
+const RECTHEIGHT = 25;
+
 
 let distPaddleBall; // assign the global variable
+
+let myCircle;
 
 //class for rectangles to break
 class Rects {
@@ -39,6 +44,7 @@ class Rects {
   displayRect() {
     fill(this.color);
     noStroke();
+    rectMode(CENTER);
 
     // draw rectangle with following variables
     rect(this.xPosition, this.yPosition, this.width, this.height, 5);
@@ -46,7 +52,7 @@ class Rects {
   
   rectCollision(ball){
     // several statements with &&
-    print(ball.x, ball.y, "xpostion", this.xPosition, "ypostion", this.yPosition);
+    //print(ball.x, ball.y, "xpostion", this.xPosition, "ypostion", this.yPosition);
     if(ball.y + (ball.size/2) >= this.yPosition + (this.height/2) &&
       ball.y - (ball.size/2) <= this.yPosition - (this.height/2) &&
       ball.x + (ball.size/2) >= this.xPosition - (this.width/2) &&
@@ -117,11 +123,63 @@ class movingBall {
 function setup() {
   createCanvas(500, 500);
   //frameRate(20);
-  background(220);
+  myCircle = new movingBall(10, 450);
+  
 
-
+    // function to draw the rectangles in the array
+  myRectsArray = drawRects();
+  
+  //CHANGE THIS PART OF THE CODE!
   //counter for the FOR loop to change xPos and yPos
-  counter = 0;
+//   counter = 0;
+
+//   //draw the rectangles to break calling class
+//   // create 32 rectangles
+//   for (let i = 0; i < 32; i++) {
+//     if (counter === 8) {
+//       counter = 0;
+//       xPos = 75; // reset to 75
+//       yPos += 25; // increment 25
+//     }
+
+//     // assign the color of rectangle
+//     // integer index for colorsArray
+//     randomIndex = int(random(0, 4));
+//     //assigning color for rectangle
+//     colorRect = colorsArray[randomIndex];
+//     print(colorRect);
+//     print(xPos, yPos);
+
+//     //push into the array the rectangles
+//     myRectsArray.push(new Rects(50, 25, colorRect, xPos, yPos));
+
+//     xPos += 50;
+
+//     counter += 1;
+//     print(counter);
+  //}
+}
+
+
+function drawRects() {
+  rectMode(CENTER);
+  const myRectsArray = [];
+  // const rows = 4; 
+  // const rectsPerRow = 8;
+  // for (let row = 1; row < (rows+1); row++){
+  //   for(let i = 1; i < (rectsPerRow+1); i++){
+  //     // integer index for colorsArray
+  //     randomIndex = int(random(0, 4));
+  //     //assigning color for rectangle
+  //     colorRect = colorsArray[randomIndex];
+  //     print((xPos*i), (yPos*row));
+  //     brick = new Rects(RECTWIDTH, RECTHEIGHT,colorRect, (xPos*i), (yPos*row));
+  //     myRectsArray.push(brick);
+  //   }
+  // }
+ //print(myRectsArray)
+  //counter for the FOR loop to change xPos and yPos
+  let counter = 0;
 
   //draw the rectangles to break calling class
   // create 32 rectangles
@@ -141,59 +199,22 @@ function setup() {
     print(xPos, yPos);
 
     //push into the array the rectangles
-    myRectsArray.push(new Rects(50, 25, colorRect, xPos, yPos));
+    myRectsArray.push(new Rects(RECTWIDTH, RECTHEIGHT, colorRect, xPos, yPos));
 
     xPos += 50;
 
     counter += 1;
     print(counter);
   }
-}
-
-
-
-function draw() {
   
-  // DO DIFFERENT STATES FOR THE GAME 
-  //INSTRUCTIONS (1)
-  //GAME (2)
-  //LOSE GAME (3)
-  background(220);
-  //set all rectangles to center mode
-  rectMode(CENTER);
-
-  //game state for playing draw the necessary objects
-  // function to draw the rectangles in the array
-  drawRects();
-  // drawing the paddle
-  drawPaddle();
-
-  // drawing the ball
-  myCircle.update(); // position of circle
-  myCircle.checkEdges(); // top, left, right collision
-  myCircle.checkPaddle(); // paddle collision
-  myCircle.checkBottom(); // end game
   
-//   for(i = myRectsArray.length-1;i >= 0; i--){ 
-//     //print("i is:", i);
-//     const brick = myRectsArray[i];
-//     if (brick.rectCollision(myCircle)){
-//     print("HIT, i is:", i )
-//       myRectsArray.splice(i,1); // eliminate the rectangle
-      
-//     }
   
-//   }
-  
-}
+  // for (let i = 0; i < myRectsArray.length; i++) {
+  //   myRectsArray[i].displayRect();
+  // }
 
-function drawRects() {
-  for (let i = 0; i < myRectsArray.length; i++) {
-    myRectsArray[i].displayRect();
-  }
-  // draw a rectangle to separate score at the top
-  fill(15);
-  rect(250, 50, 500, 5);
+  
+  return myRectsArray;
 }
 
 function drawPaddle() {
@@ -216,5 +237,50 @@ function drawPaddle() {
 }
 
 
+function draw() {
+  
+  // DO DIFFERENT STATES FOR THE GAME 
+  //INSTRUCTIONS (1)
+  //GAME (2)
+  //LOSE GAME (3)
+  background(220);
+  
+   // draw a rectangle to separate score at the top
+  rectMode(CENTER);
+  fill(15);
+  rect(250, 50, 500, 5);
+  
 
-let myCircle = new movingBall(10, 450);
+  //game state for playing draw the necessary objects
+  // // function to draw the rectangles in the array
+  // drawRects();
+  // drawing the paddle
+  drawPaddle();
+  
+  
+
+  // drawing the ball
+  myCircle.update(); // position of circle
+  myCircle.checkEdges(); // top, left, right collision
+  myCircle.checkPaddle(); // paddle collision
+  myCircle.checkBottom(); // end game
+  
+  for(i = myRectsArray.length-1;i >= 0; i--){ 
+    //print("i is:", i);
+    const brick = myRectsArray[i];
+    if (brick.rectCollision(myCircle)){
+    print("HIT, i is:", i )
+      myRectsArray.splice(i,1); // eliminate the rectangle
+      
+    } else{
+      brick.displayRect();
+    }
+  
+  }
+  
+}
+
+
+
+
+
