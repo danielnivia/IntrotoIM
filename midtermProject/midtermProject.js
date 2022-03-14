@@ -58,7 +58,7 @@ class Rects {
        ball.xPos + (ball.size) >= this.xPosition - (this.width/2) &&
        ball.xPos + (ball.size) <= this.xPosition + (this.width/2))
       {
-        print("HELLO!!")
+        //print("HELLO!!")
        return true; // confirm there is a collision
        }
     
@@ -118,7 +118,7 @@ class movingBall {
   }
   
   changeDirection(string){
-    if (string ==='y'){
+    if (string === 'y'){
       this.ySpeed = - this.ySpeed;
     }
     else{
@@ -233,17 +233,20 @@ function draw() {
     //print("i is:", i);
     const brick = myRectsArray[i];
     if (brick.rectCollision(myCircle)){
-    print("HIT, i is:", i )
+    //print("HIT, i is:", i )
+      myCircle.changeDirection('y')
       myRectsArray.splice(i,1); // eliminate the rectangle
       
     } else{
-      brick.displayRect();
+      brick.displayRect(); // show the Rectangle
     }
   
   }
   
   
 }
+
+
 
 
 
