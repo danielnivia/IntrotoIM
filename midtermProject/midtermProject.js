@@ -33,10 +33,11 @@ class Rects {
   //variabla name short hand
   //to not clash with p5js built variables
   //wid=width/hgt=height/clr=color
-  constructor(wid, hgt, clr, xPos, yPos) {
+  constructor(wid, hgt, clr, hits, xPos, yPos) {
     this.width = wid;
     this.height = hgt;
     this.color = clr;
+    this.hits = hits; // number of hits per brick
     this.xPosition = xPos;
     this.yPosition = yPos;
   }
@@ -47,7 +48,7 @@ class Rects {
     rectMode(CENTER);
 
     // draw rectangle with following variables
-    rect(this.xPosition, this.yPosition, this.width, this.height, 5);
+    rect(this.xPosition, this.yPosition, this.width, this.height,2);
   }
   
   rectCollision(ball){
@@ -59,6 +60,7 @@ class Rects {
        ball.xPos + (ball.size) <= this.xPosition + (this.width/2))
       {
         //print("HELLO!!")
+        this.hits -= 1; // reduce the hit number
        return true; // confirm there is a collision
        }
     
@@ -161,13 +163,15 @@ function drawRects() {
     // assign the color of rectangle
     // integer index for colorsArray
     randomIndex = int(random(0, 4));
+    hits = randomIndex + 1
+    print("INDEX IS", randomIndex, "hits is", hits);
     //assigning color for rectangle
     colorRect = colorsArray[randomIndex];
     print(colorRect);
     print(xPos, yPos);
 
     //push into the array the rectangles
-    myRectsArray.push(new Rects(RECTWIDTH, RECTHEIGHT, colorRect, xPos, yPos));
+    myRectsArray.push(new Rects(RECTWIDTH, RECTHEIGHT, colorRect, hits ,xPos, yPos));
 
     xPos += 50;
 
@@ -235,7 +239,11 @@ function draw() {
     if (brick.rectCollision(myCircle)){
     //print("HIT, i is:", i )
       myCircle.changeDirection('y')
-      myRectsArray.splice(i,1); // eliminate the rectangle
+      if(brick.hits === 0){
+        myRectsArray.splice(i,1); // eliminate the rectangle
+        
+      }
+      
       
     } else{
       brick.displayRect(); // show the Rectangle
@@ -245,8 +253,4 @@ function draw() {
   
   
 }
-
-
-
-
 
