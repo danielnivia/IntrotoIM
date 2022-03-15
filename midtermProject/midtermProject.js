@@ -41,7 +41,9 @@ function preload() {
 
 function mousePressed() {
   mouseClickSound.play();
+  loop();
   gameScreen = 1; // initiate the game
+  return true
 }
 
 //class for rectangles to break
@@ -96,7 +98,7 @@ class movingBall {
     this.size = CIRCLESIZE;
     this.paddleSound = paddleCollisionSound;
     this.gameoverSound = gameoverSound;
-    this.gameScreen = gameScreen;
+    //this.gameScreen = gameScreen;
   }
 
   update() {
@@ -139,9 +141,8 @@ class movingBall {
       // change the game state
       this.gameoverSound.play();
       print("OUT OF BOUNDS");
-      this.gameScreen = 2; // assign to 2
       
-      noLoop();
+      return true
     }
   }
 
@@ -183,11 +184,11 @@ function drawRects() {
     // integer index for colorsArray
     randomIndex = int(random(0, 4));
     hits = randomIndex + 1;
-    print("INDEX IS", randomIndex, "hits is", hits);
+    //print("INDEX IS", randomIndex, "hits is", hits);
     //assigning color for rectangle
     colorRect = colorsArray[randomIndex];
-    print(colorRect);
-    print(xPos, yPos);
+    //print(colorRect);
+    //print(xPos, yPos);
 
     //push into the array the rectangles
     myRectsArray.push(
@@ -197,7 +198,7 @@ function drawRects() {
     xPos += 50;
 
     counter += 1;
-    print(counter);
+    //print(counter);
   }
 
   return myRectsArray;
@@ -268,18 +269,42 @@ function draw() {
     myCircle.update(); // position of circle
     myCircle.checkEdges(); // top, left, right collision
     myCircle.checkPaddle(); // paddle collision
-    myCircle.checkBottom(); // end game
+    if(myCircle.checkBottom()){
+      gameScreen = 2;
+      
+    } // end game
     
   } // end of gameScreen 1
   
   if (gameScreen === 2){
     if (myRectsArray === []){
       print("you win");
+      //change this to text on the screen
       
     }else{
       print("you lose");
-      //noLoop();
+      
+   
+      if (mousePressed()){
+        resetGame(); // function that recalls the variables
+        gameScreen = 1;
+        
+
+        
+     }
+      noLoop();
     }
   }
+  
+}
+
+function resetGame(){
+  myCircle = new movingBall(10, 450);
+  
+  xPos = 75; // reset the value
+  yPos = 100; // reset the value
+
+  // function to draw the rectangles in the array
+  myRectsArray = drawRects();
   
 }
