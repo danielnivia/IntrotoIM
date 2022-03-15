@@ -26,6 +26,8 @@ let myCircle; // create a global variable
 
 let gameScreen = 0; // gamescreen value
 
+let score = 0; // score for points
+
 //loads the files that will be used in the game
 function preload() {
   //images
@@ -173,7 +175,7 @@ function drawRects() {
 
   //draw the rectangles to break calling class
   // create 32 rectangles
-  for (let i = 0; i < 32; i++) {
+  for (let i = 0; i < 16; i++) {
     if (counter === 8) {
       counter = 0;
       xPos = 75; // reset to 75
@@ -258,13 +260,21 @@ function draw() {
         //print("HIT, i is:", i )
         myCircle.changeDirection("y");
         if (brick.hits === 0) {
+          score += 1; // increment the ponts each hit
           myRectsArray.splice(i, 1); // eliminate the rectangle
+          print(myRectsArray.length, "length")
         }
       } else {
         brick.displayRect(); // show the Rectangle
       }
     }
+    if(myRectsArray.length === 0){
+      gameScreen = 2;
+    }
     
+    fill(0);
+    textSize(20)
+    text("Score: "+ str(score), 410,25);
     // drawing the ball
     myCircle.update(); // position of circle
     myCircle.checkEdges(); // top, left, right collision
@@ -272,17 +282,37 @@ function draw() {
     if(myCircle.checkBottom()){
       gameScreen = 2;
       
+    
+      
     } // end game
     
   } // end of gameScreen 1
   
   if (gameScreen === 2){
-    if (myRectsArray === []){
+    textSize(40); // assign text size
+    textAlign(CENTER);
+     
+    if (myRectsArray.length === 0){
       print("you win");
+      wingameSound.play();
       //change this to text on the screen
+      text("YOU WIN!", 250,250 );
+      
+      textSize(30);
+      text("Click the screen to start again", 250, 300);
+      
+      if (mousePressed()){
+        resetGame(); // function that recalls the variables
+        gameScreen = 1;
+      }  
+      noLoop();
       
     }else{
       print("you lose");
+      text("YOU LOSE!", 250,250);
+      textSize(30);
+      text("Click the screen to start again", 250, 300);
+      
       
    
       if (mousePressed()){
@@ -303,7 +333,7 @@ function resetGame(){
   
   xPos = 75; // reset the value
   yPos = 100; // reset the value
-
+  score = 0; // reset the points
   // function to draw the rectangles in the array
   myRectsArray = drawRects();
   
