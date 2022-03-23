@@ -39,7 +39,25 @@ As you can see in the code fragment above that is in my checkPaddle() method ins
 
 #### Third Update: Collision with Bricks 
 
-This update was the hardest of all. I struggled a lot on grasping the concept of how to check for each individual brick if the ball was colliding. Also I had no idea how would I make the brick disappear after the collision. Initially I was thinking of making the bricks opacity 0, but the problem is that technically the brick will still be there. Therefore, I had to check different tutorials, firstly the one I mentioned previously was [](https://www.youtube.com/watch?v=3GLirU3SkDM)
+This update was the hardest of all. I struggled a lot on grasping the concept of how to check for each individual brick if the ball was colliding. Also I had no idea how would I make the brick disappear after the collision. Initially I was thinking of making the bricks opacity 0, but the problem is that technically the brick will still be there. Therefore, I had to check different tutorials, firstly the one I mentioned previously was [Coding Garden - Build a Brick-Breaker game with P5.js - Special Guest Brooks Builds](https://www.youtube.com/watch?v=3GLirU3SkDM), then [xin xin - 8.4 Class and Objects - Collision Detection - p5.js Tutorial](https://www.youtube.com/watch?v=cZ_VHAT_Sq4&t=744s) and [vhHacks - Atari Breakout Workshop in p5.js](https://www.youtube.com/watch?v=y8yiseJU8r4). Particulary the first and the last showed me a particular method for lists to eliminate the bricks, which is `splice()`. This method allows to eliminate a specific element in the list meaning that the brick diplayed on screen will completely disappear and not affecting future collisions.
+
+```
+ for (i = myRectsArray.length - 1; i >= 0; i--) {
+      //print("i is:", i);
+      const brick = myRectsArray[i];
+      if (brick.rectCollision(myCircle)) {
+        //print("HIT, i is:", i )
+        myCircle.changeDirection("y");
+        if (brick.hits === 0) {
+          myRectsArray.splice(i, 1); // eliminate the rectangle
+          print(myRectsArray.length, "length")
+        }
+      } else {
+        brick.displayRect(); // show the Rectangle
+      }
+```
+
+This code fragment had some influence on Coding Garden's tutorial. Particulary the use of the for loop to run through my array of bricks and check if for each brick in the array there was a collision at that moment with `brick.rectCollision(myCircle)`. This particular for loop is characterized for going through the list backwards thanks to the `i = myRectsArray.length - 1`  statement at the beginning.
 
 
 #### Fourth Update: Game Scenes, Sound and Images
