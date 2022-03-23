@@ -17,6 +17,7 @@ const INITIALXSPEED = 4;
 const INITIALYSPEED = -6; // starting moving up
 const CIRCLESIZE = 15;
 
+//constant sizes for bricks
 const RECTWIDTH = 50;
 const RECTHEIGHT = 25;
 
@@ -41,11 +42,12 @@ function preload() {
   wingameSound = loadSound("sounds/wingame.mp3");
 }
 
+//check if mouse was pressed
 function mousePressed() {
   mouseClickSound.play();
-  loop();
+  loop(); // returns the looping state to the game
   gameScreen = 1; // initiate the game
-  return true
+  return true;
 }
 
 //class for rectangles to break
@@ -61,7 +63,7 @@ class Rects {
     this.hits = hits; // number of hits per brick
     this.xPosition = xPos;
     this.yPosition = yPos;
-    this.brickSound = collisionBrickSound; 
+    this.brickSound = collisionBrickSound;
   }
 
   displayRect() {
@@ -83,8 +85,7 @@ class Rects {
       ball.xPos + ball.size >= this.xPosition - this.width / 2 &&
       ball.xPos + ball.size <= this.xPosition + this.width / 2
     ) {
-      //print("HELLO!!")
-      this.brickSound.play();//play sound each hit
+      this.brickSound.play(); //play sound each hit
       this.hits -= 1; // reduce the hit number
       return true; // confirm there is a collision
     }
@@ -120,7 +121,6 @@ class movingBall {
     //+50 to hit the top line
     // eliminating the or part makes the ball disappear at the bottom
     if (this.yPos < R + 50) {
-      // || this.y > height - R) {
       this.ySpeed = -this.ySpeed;
     }
   }
@@ -143,8 +143,8 @@ class movingBall {
       // change the game state
       this.gameoverSound.play();
       print("OUT OF BOUNDS");
-      
-      return true
+
+      return true;
     }
   }
 
@@ -175,7 +175,7 @@ function drawRects() {
 
   //draw the rectangles to break calling class
   // create 32 rectangles
-  for (let i = 0; i < 16; i++) {
+  for (let i = 0; i < 32; i++) {
     if (counter === 8) {
       counter = 0;
       xPos = 75; // reset to 75
@@ -186,11 +186,9 @@ function drawRects() {
     // integer index for colorsArray
     randomIndex = int(random(0, 4));
     hits = randomIndex + 1;
-    //print("INDEX IS", randomIndex, "hits is", hits);
+
     //assigning color for rectangle
     colorRect = colorsArray[randomIndex];
-    //print(colorRect);
-    //print(xPos, yPos);
 
     //push into the array the rectangles
     myRectsArray.push(
@@ -200,7 +198,6 @@ function drawRects() {
     xPos += 50;
 
     counter += 1;
-    //print(counter);
   }
 
   return myRectsArray;
@@ -211,7 +208,7 @@ function drawPaddle() {
   rectMode(CENTER); // make the rectangle in the center not corner
   fill(10);
 
-  //rectangle = rect(xPosRect, 450, 80, 10);
+  //creates the paddle based on the mouseX position
   rectangle = rect(mouseX, 450, 80, 10);
   pop();
 
@@ -234,7 +231,7 @@ function draw() {
   background(220);
   if (gameScreen === 0) {
     imageMode(CENTER); // center the image
-    image(instructions, 250, 250,400,400);
+    image(instructions, 250, 250, 400, 400);
   }
 
   if (gameScreen === 1) {
@@ -243,18 +240,11 @@ function draw() {
     fill(15);
     rect(250, 50, 500, 5);
 
-    //game state for playing draw the necessary objects
-    // // function to draw the rectangles in the array
-    // drawRects();
-    // drawing the paddle
     drawPaddle();
 
-    
-
-    // drawing rectangles
+    //checking for collisions rectangles
 
     for (i = myRectsArray.length - 1; i >= 0; i--) {
-      //print("i is:", i);
       const brick = myRectsArray[i];
       if (brick.rectCollision(myCircle)) {
         //print("HIT, i is:", i )
@@ -262,79 +252,69 @@ function draw() {
         if (brick.hits === 0) {
           score += 1; // increment the ponts each hit
           myRectsArray.splice(i, 1); // eliminate the rectangle
-          print(myRectsArray.length, "length")
+          print(myRectsArray.length, "length");
         }
       } else {
         brick.displayRect(); // show the Rectangle
       }
     }
-    if(myRectsArray.length === 0){
+    if (myRectsArray.length === 0) {
       gameScreen = 2;
     }
-    
+
+    // text information for score
     fill(0);
-    textSize(20)
-    text("Score: "+ str(score), 410,25);
+    textSize(20);
+    text("Score: " + str(score), 410, 25);
+
     // drawing the ball
     myCircle.update(); // position of circle
     myCircle.checkEdges(); // top, left, right collision
     myCircle.checkPaddle(); // paddle collision
-    if(myCircle.checkBottom()){
+    if (myCircle.checkBottom()) {
       gameScreen = 2;
-      
-    
-      
     } // end game
-    
   } // end of gameScreen 1
-  
-  if (gameScreen === 2){
+
+  if (gameScreen === 2) {
     textSize(40); // assign text size
     textAlign(CENTER);
-     
-    if (myRectsArray.length === 0){
-      print("you win");
+
+    if (myRectsArray.length === 0) {
+      print("you win"); // print to check in console
       wingameSound.play();
       //change this to text on the screen
-      text("YOU WIN!", 250,250 );
-      
-      textSize(30);
-      text("Click the screen to start again", 250, 300);
-      
-      if (mousePressed()){
-        resetGame(); // function that recalls the variables
-        gameScreen = 1;
-      }  
-      noLoop();
-      
-    }else{
-      print("you lose");
-      text("YOU LOSE!", 250,250);
-      textSize(30);
-      text("Click the screen to start again", 250, 300);
-      
-      
-   
-      if (mousePressed()){
-        resetGame(); // function that recalls the variables
-        gameScreen = 1;
-        
+      text("YOU WIN!", 250, 250);
 
-        
-     }
-      noLoop();
+      textSize(30);
+      text("Click the screen to start again", 250, 300);
+
+      if (mousePressed()) {
+        resetGame(); // function that recalls the variables
+        gameScreen = 1;
+      }
+      noLoop(); // stops the game temporarily
+    } else {
+      print("you lose"); // print to check in console
+      text("YOU LOSE!", 250, 250);
+      textSize(30);
+      text("Click the screen to start again", 250, 300);
+
+      if (mousePressed()) {
+        resetGame(); // function that recalls the variables
+        gameScreen = 1;
+      }
+      noLoop(); // stops the game temporarily
     }
   }
-  
 }
 
-function resetGame(){
+function resetGame() {
   myCircle = new movingBall(10, 450);
-  
+
   xPos = 75; // reset the value
   yPos = 100; // reset the value
   score = 0; // reset the points
   // function to draw the rectangles in the array
   myRectsArray = drawRects();
-  
 }
