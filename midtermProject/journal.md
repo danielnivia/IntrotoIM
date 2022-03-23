@@ -6,13 +6,11 @@ The following markdown file hopes to explain the initial concept for my Midterm 
 
 My initial idea for the project is to do the Breakout Atari game. This classic game main objective is to break a wall of bricks with a ball and paddle. However, I was planning to add some changes to the game, in this case primarily the brick wall with have bricks with different values (needs more hits to be destroyed) and falling objects that need to be avoided by the user while playing the game. 
 
+[DRAWING HERE IN IPAD]
 
 #### Most complicated element
 
 I believe that the most complicated element for now is getting right the collisions. We had seen an example in class of how to do a bouncing ball on the edges of the canvas. However, this now needs to be applied to objects within the canvas, in this case the bricks and the paddle. 
-
-
-
 
 
 #### First Update: Bricks, Paddle Movement and Bouncing Ball
@@ -28,8 +26,20 @@ At the same time I created the ball, for this I used the class example we had wi
 
 #### Second Update: Collision with Paddle 
 
+Before explaining how I did the collisions for the paddle, I decided to change the movement of the paddle from keyboard to mouseX. Partly to avoid the click the screen bug before using the keyboard and because it is faster, so it allows the user to react faster to the movement of the ball. For this stage, I decided to use one of the methods to check collisions shared in this video [8.4 Class and Objects - Collision Detection - p5.js Tutorial](https://www.youtube.com/watch?v=cZ_VHAT_Sq4&t=744s). The first method suggested utilizing the `dist` method in p5js, intially I struggled finding the collision point between the paddle and the ball. But after using print statements to debug the code I identified the distance between the paddle and the ball while the paddle was moving. 
+
+```
+distPaddleBall = int(dist(this.xPos, this.yPos, mouseX, 445));
+    //checking for the values commented out
+    //print("Distance",distPaddleBall,"xPosRect", xPosRect, "Y",bally);
+    if (distPaddleBall > 0 && distPaddleBall < 40 && this.yPos > 445)
+```
+
+As you can see in the code fragment above that is in my checkPaddle() method inside the class movingBall, I use the `dist()` method and intially I had some print statements that helped me identify what was the distance between the paddle and the ball when they collided. Therefore I used those values for the if statment with 3 ands so that the condition was true. I believe this way was better using the `dist()` method as the paddle is constantly updating based on the mouseX position rather than trying to do a series of and statements for each possible position the paddle could be. 
 
 #### Third Update: Collision with Bricks 
+
+This update was the hardest of all. I struggled a lot on grasping the concept of how to check for each individual brick if the ball was colliding. Also I had no idea how would I make the brick disappear after the collision. Initially I was thinking of making the bricks opacity 0, but the problem is that technically the brick will still be there. Therefore, I had to check different tutorials, firstly the one I mentioned previously was [](https://www.youtube.com/watch?v=3GLirU3SkDM)
 
 
 #### Fourth Update: Game Scenes, Sound and Images
