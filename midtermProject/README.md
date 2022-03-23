@@ -2,4 +2,14 @@ This midterm project emulates the classic Atari game Breakout. Although I looked
 
 The user is encountered by a menu with the instructions of the game, after clicking the screen the game begins. Each time the ball hits the paddle and the bricks there is a sound. When a brick is destroyed the score changes, regardless of the color of the brick each brick destroyed is worth 1 point. When the user loses or wins there is a sound for each scenario. Finally after the user presses again the screen they restart a new game.
 
-Recreating this game was a great experience to understand the capabilities of p5js and how to apply the knowledge learned in these past few weeks.
+Recreating this game was a great experience to understand the capabilities of p5js and how to apply the knowledge learned in these past few weeks. Below are some images about the game.
+
+![ConceptGame](ConceptGame.png)
+
+![breakoutInstructions](breakoutInstructions.png)
+
+![finalgame](finalgame.jpg)
+
+![winscreen](winscreen.jpg)
+
+![losescreen](losescreen.jpg)
