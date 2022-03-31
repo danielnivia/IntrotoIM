@@ -8,4 +8,11 @@ After adjusting the copper tape to my skin in the correct position so that both 
 
 Other ideas that came to mind after creating this switch like to use my foot, steping on a surface or lifting my foot. I am excited to see how other people came with unusual ways to make a switch.
 
-[ADD FILES FOR PHOTOS AND VIDEO]
+
+![IMG_20220330_174111](https://user-images.githubusercontent.com/78901786/160987600-92ab9f59-ab39-42c3-ad2b-fe26cffd9f2f.jpg)
+
+![IMG_20220330_172954](https://user-images.githubusercontent.com/78901786/160987634-12ae98dc-296f-4a88-9406-4b0fa190cc6b.jpg)
+
+![IMG_20220330_172959](https://user-images.githubusercontent.com/78901786/160987668-c1e8b656-7842-41b1-b13b-0735e5bcd8bd.jpg)
+
+[Video of the circuit working](https://drive.google.com/file/d/1OhoP9flF-vhlyt59GUmXkVQZxNkRRwkn/view?usp=sharing)
