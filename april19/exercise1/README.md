@@ -24,3 +24,11 @@ Basically, the portName that was previously used had a different path to the por
 
 **Video**
 https://vimeo.com/manage/videos/700271946
+
+**Photo**
+![exercise1_arduinop5](https://user-images.githubusercontent.com/78901786/163875279-565f4248-72ac-4976-9010-83227fa253e7.jpg)
+
+**Schematic**
+
+![Schematic1](https://user-images.githubusercontent.com/78901786/163875312-1fef0b9f-59c5-4925-ae22-9f74d0cc11e2.png)
+
