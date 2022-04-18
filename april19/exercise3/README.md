@@ -15,6 +15,6 @@ Link to the code in p5js:
 https://editor.p5js.org/danielnivia/sketches/CJv3vdImK 
 
 Video showing the circuit working:
-https://vimeo.com/manage/videos/700276908
+https://www.youtube.com/watch?v=NTzk4fesVME
 
 Schematic: 
