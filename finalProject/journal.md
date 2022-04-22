@@ -3,6 +3,9 @@ Journal for the Final Project
 UPDATE April 22, 2022:
 This project will be done in pair with Liam as my colleague. We still plan to develop an 8 step sequencer. The sounds and effects and display of what is being played will be done through p5js, while the hardware and physical control will be from arduino. We hope to create a fancier board for the arduino presentation.
 
+Journal will be updated in Liam's repository:
+[Liam Github](https://github.com/l-mccarthy/IntroToIM/blob/main/finalProject/journal.md)
+
 **Preliminary Concept**
 
 For my final project I am thinking to develop a 8-step sequencer with some controls such as BPM (speed of playback), notes on/off, note pitch and change octaves. This part would be mainly the Arduino doing the action. In regards of p5js, I believe I will do some kind of animation or objects moving in relationship to the sounds produce by the sequencer. The idea as of now is still a little raw, but I have found some videos in YouTube that can serve as inspiration to develop this project.
